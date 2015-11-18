@@ -48,3 +48,5 @@ p <- ggplot(phylumfig, aes(MAT, relabun.pct, fill = factor(phylum))) +
 
 #save stacked bar chart as pdf
 ggsave("MATphyla.pdf", width = 7, height = 3.5)
+#save stacked bar chart as TIFF
+ggsave('MATphyla.tiff', width = 7, height = 3.5, dpi = 400)
