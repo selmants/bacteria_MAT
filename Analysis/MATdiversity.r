@@ -103,3 +103,9 @@ obs.fig <- ggplot(div.summary, aes(MAT, obs)) +
 #save figure as .pdf file
 ggsave('ObsRich.pdf', width = 4, height = 3.5)
 
+#save FaithPD and obsrich as two-panel figure in TIFF format
+library(gridExtra)
+tiff('PD_rich.tiff', width = 2500, height = 1050, res = 400)
+grid.arrange(obs.fig, pd.fig, ncol = 2)
+dev.off()
+
