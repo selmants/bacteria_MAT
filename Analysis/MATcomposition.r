@@ -66,12 +66,12 @@ leg.title <- expression(paste('MAT (', degree, 'C)'))
 
 #ggplot2 code for ordination figure
 p <- ggplot(centroid.wUF, aes(NMS1, NMS2)) +
-  geom_point(size = 3.8, aes(colour = MAT)) +
-  theme_classic() +
   geom_errorbar(aes(ymax = NMS2 + NMS2.ci, ymin = NMS2 - NMS2.ci),
     width = 0.0, size = 0.22, colour = 'grey') +
   geom_errorbarh(aes(xmax = NMS1 + NMS1.ci, xmin = NMS1 - NMS1.ci),
     height = 0.0, size = 0.22, colour = 'grey') +
+  geom_point(size = 3.8, aes(colour = MAT)) +
+  theme_classic() +
     theme(axis.ticks = element_blank(), axis.text = element_blank()) +
     scale_colour_gradient(low = "black", high = "yellow", name = leg.title) +
     scale_x_continuous(limits = c(-0.28, 0.24)) +
@@ -79,6 +79,8 @@ p <- ggplot(centroid.wUF, aes(NMS1, NMS2)) +
   xlab('NMDS Axis 1') +
   ylab('NMDS Axis 2')
 
-#save figure as .pdf file
+#save ordination figure as .pdf file
 ggsave('wUF_NMDS.pdf', width = 5, height = 3.5)
+#save ordination figure as .TIFF file
+ggsave('wUF_NMDS.tiff', width = 5, height = 3.5, dpi = 400)
 
