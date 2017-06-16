@@ -17,14 +17,10 @@ bray.ord <- metaMDS(bray.dm)
 wUF.ord <- metaMDS(wUF.dm)
  
 #read environmental matrix into R 
-site.env <- read.csv('site_mat.csv', row.names = 1)
+site.env <- read.csv('site_mat_sorted.csv', row.names = 1)
 #test effect of MAT on community composition using permanova 
 bray.mod <- adonis(bray.dm ~ MAT + TBCF + pH, site.env, permutations = 999)
 wUF.mod <- adonis(wUF.dm ~ MAT + TBCF + pH, site.env, permutations = 999)
-
-#create new dataframe of site data with 'sampleID' column heading
-MATsite <- read.csv('site_MAT.csv')
-colnames(MATsite) <- c('sampleID', 'MAT', 'site')
 
 #create dataframe including bray NMDS axis scores & site data 
 bray.xy <- data.frame(MDS1 = bray.ord$points[,1], MDS2 = bray.ord$points[,2])
